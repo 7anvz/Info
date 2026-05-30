@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counseling – Infografía Académica</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --cream: #f5f0e8;
+    --accent1: #1a4b6e;   /* deep teal-blue */
+    --accent2: #c94f2b;   /* terracotta */
+    --accent3: #3d7d5f;   /* sage green */
+    --accent4: #7b4fa0;   /* plum */
+    --accent5: #c8882a;   /* amber */
+    --light1: #ddeaf5;
+    --light2: #fae8e3;
+    --light3: #dff0e8;
+    --light4: #ede3f5;
+    --light5: #fdf0dc;
+    --rule: #c5bfb4;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* ── PAGE ── */
+  .page {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 52px 48px 64px;
+    position: relative;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+    gap: 24px;
+  }
+  .header-left .kicker {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+  .header-left h1 {
+    font-family: var(--font-display);
+    font-size: 42px;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .header-left h1 em {
+    color: var(--accent1);
+    font-style: normal;
+  }
+  .header-right {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    letter-spacing: .08em;
+    line-height: 1.8;
+  }
+
+  /* ── GRID LAYOUT ── */
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+  .row-3 { grid-template-columns: repeat(3, 1fr); }
+  .row-2 { grid-template-columns: 1fr 1fr; }
+  .row-2-wide { grid-template-columns: 2fr 1fr; }
+  .row-1 { grid-template-columns: 1fr; }
+  .mb { margin-bottom: 18px; }
+
+  /* ── CARD ── */
+  .card {
+    border-radius: 4px;
+    padding: 22px 24px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+  .card.blue   { background: var(--light1); } .card.blue::before   { background: var(--accent1); }
+  .card.red    { background: var(--light2); } .card.red::before    { background: var(--accent2); }
+  .card.green  { background: var(--light3); } .card.green::before  { background: var(--accent3); }
+  .card.plum   { background: var(--light4); } .card.plum::before   { background: var(--accent4); }
+  .card.amber  { background: var(--light5); } .card.amber::before  { background: var(--accent5); }
+  .card.dark   { background: var(--accent1); color: #fff; } .card.dark::before { background: var(--accent2); }
+
+  .card-num {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 900;
+    opacity: .08;
+    position: absolute;
+    top: 4px; right: 14px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .card.dark .card-num { opacity: .15; color: #fff; }
+
+  .card h2 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: .01em;
+  }
+  .card.blue h2  { color: var(--accent1); }
+  .card.red h2   { color: var(--accent2); }
+  .card.green h2 { color: var(--accent3); }
+  .card.plum h2  { color: var(--accent4); }
+  .card.amber h2 { color: var(--accent5); }
+  .card.dark h2  { color: #e8d9b0; }
+
+  .card p { font-size: 12.5px; }
+  .card.dark p { color: rgba(255,255,255,.85); }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .blue .tag   { background: var(--accent1); color: #fff; }
+  .red .tag    { background: var(--accent2); color: #fff; }
+  .green .tag  { background: var(--accent3); color: #fff; }
+  .plum .tag   { background: var(--accent4); color: #fff; }
+  .amber .tag  { background: var(--accent5); color: #fff; }
+  .dark .tag   { background: rgba(255,255,255,.15); color: #e8d9b0; }
+
+  /* ── LISTS ── */
+  ul.dot { list-style: none; padding: 0; }
+  ul.dot li {
+    padding: 3px 0 3px 16px;
+    position: relative;
+    font-size: 12.5px;
+  }
+  ul.dot li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    font-size: 10px; top: 5px;
+  }
+  .blue  ul.dot li::before { color: var(--accent1); }
+  .red   ul.dot li::before { color: var(--accent2); }
+  .green ul.dot li::before { color: var(--accent3); }
+  .plum  ul.dot li::before { color: var(--accent4); }
+  .amber ul.dot li::before { color: var(--accent5); }
+  .dark  ul.dot li::before { color: #e8d9b0; }
+  .dark  ul.dot li { color: rgba(255,255,255,.85); }
+
+  /* ── STAGES STRIP ── */
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 14px;
+  }
+  .stage {
+    padding: 14px 14px 12px;
+    position: relative;
+  }
+  .stage-n {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 900;
+    opacity: .18;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stage-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 11.5px;
+    margin-bottom: 5px;
+  }
+  .stage-quote {
+    font-size: 10.5px;
+    font-style: italic;
+    opacity: .85;
+    line-height: 1.35;
+  }
+  .stage:nth-child(1) { background: #1a4b6e; color: #fff; }
+  .stage:nth-child(2) { background: #225d88; color: #fff; }
+  .stage:nth-child(3) { background: #2a7fa6; color: #fff; }
+  .stage:nth-child(4) { background: #3d9db8; color: #fff; }
+  .stage:nth-child(5) { background: #5abdc7; color: #fff; }
+
+  /* ── ARROW CONNECTOR ── */
+  .arrow-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    text-align: center;
+    font-size: 18px;
+    color: var(--accent1);
+    opacity: .4;
+    margin: 3px 0;
+    padding: 0 6%;
+  }
+
+  /* ── ELEMENTS GRID ── */
+  .el-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .el-item {
+    background: rgba(255,255,255,.55);
+    border-radius: 3px;
+    padding: 10px 12px;
+    border-left: 3px solid var(--accent1);
+  }
+  .el-item strong {
+    display: block;
+    font-size: 11.5px;
+    color: var(--accent1);
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .el-item span { font-size: 11px; line-height: 1.4; }
+
+  /* ── TECHNIQUES GRID ── */
+  .tech-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .tech-group {
+    background: rgba(255,255,255,.5);
+    border-radius: 3px;
+    padding: 10px 12px;
+  }
+  .tech-group h4 {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+  .tech-group ul { list-style: none; }
+  .tech-group ul li {
+    font-size: 11.5px;
+    padding: 2px 0;
+    padding-left: 12px;
+    position: relative;
+  }
+  .tech-group ul li::before {
+    content: '–';
+    position: absolute; left: 0;
+    opacity: .5;
+  }
+
+  /* ── PILLARS ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .pillar {
+    text-align: center;
+    padding: 16px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,.6);
+  }
+  .pillar .icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .pillar strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--accent1);
+  }
+  .pillar span { font-size: 11px; line-height: 1.4; }
+
+  /* ── SUMMARY CHIPS ── */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .chip {
+    background: rgba(255,255,255,.9);
+    border: 1.5px solid var(--accent1);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--accent1);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1.5px solid var(--rule);
+    margin: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 30px;
+    border-top: 1.5px solid var(--rule);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #aaa;
+    letter-spacing: .05em;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page { padding: 30px; }
+    @page { size: A3 landscape; margin: 10mm; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="header-left">
+      <div class="kicker">Universidad Privada del Norte · Entrevista Terapéutica · Devorah de los Angeles Aquino Mallqui</div>
+      <h1><em>Counseling</em> y la Función<br>Motivadora de la Entrevista</h1>
+    </div>
+    <div class="header-right">
+      Área de Psicología Clínica<br>
+      Entrevista &amp; Relación Terapéutica<br>
+      Infografía de Referencia
+    </div>
+  </header>
+
+  <!-- ══ ROW 1: Definición + Proceso de cambio ══ -->
+  <div class="grid row-2 mb">
+
+    <!-- 1. Definición -->
+    <div class="card blue">
+      <span class="card-num">1</span>
+      <div class="tag">Definición</div>
+      <h2>¿Qué es el Counseling?</h2>
+      <p style="margin-bottom:10px">Relación <strong>activa y colaborativa</strong> entre el paciente y el psicólogo orientada a potenciar el crecimiento personal y la resolución de conflictos. No es solo consejo: es un proceso estructurado de acompañamiento.</p>
+      <ul class="dot">
+        <li>Resolver conflictos internos y externos</li>
+        <li>Generar resultados concretos y medibles</li>
+        <li>Descubrir recursos internos del paciente</li>
+        <li>Trazar objetivos de crecimiento personal</li>
+      </ul>
+      <div class="tech-cols" style="margin-top:12px">
+        <div class="tech-group">
+          <h4 style="color:var(--accent1)">Conceptos clave</h4>
+          <ul>
+            <li>Asesoramiento</li>
+            <li>Prevención</li>
+            <li>Aspectos remediables</li>
+          </ul>
+        </div>
+        <div class="tech-group">
+          <h4 style="color:var(--accent1)">Herramientas</h4>
+          <ul>
+            <li>Psicoeducación</li>
+            <li>Modalidades terapéuticas</li>
+            <li>Entrevista motivacional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Proceso de cambio -->
+    <div class="card amber">
+      <span class="card-num">3</span>
+      <div class="tag">Proceso de Cambio</div>
+      <h2>Counseling y el Cambio Terapéutico</h2>
+      <ul class="dot" style="margin-bottom:12px">
+        <li>La <strong>ambivalencia</strong> es normal y esperada en el deseo de cambiar</li>
+        <li>El proceso <strong>no es lineal ni estático</strong>: hay avances, retrocesos y recaídas</li>
+        <li>El progreso depende de que paciente y terapeuta coincidan en la <strong>etapa del cambio</strong></li>
+        <li>Influyen la <strong>importancia</strong> que la persona otorga al cambio y la <strong>confianza</strong> en su capacidad de lograrlo</li>
+      </ul>
+      <div style="background:rgba(200,136,42,.15);border-left:3px solid var(--accent5);border-radius:3px;padding:10px 12px;font-size:12px">
+        <strong style="color:var(--accent5)">Nota clínica:</strong> La resistencia no es oposición; es información valiosa sobre la ambivalencia del paciente. Trabajarla con empatía acelera el cambio.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 2: Etapas del cambio (full width) ══ -->
+  <div class="card blue mb" style="padding-bottom:18px">
+    <span class="card-num">4</span>
+    <div class="tag">Modelo Transteórico · Prochaska &amp; DiClemente</div>
+    <h2>Etapas del Proceso de Cambio</h2>
+    <div class="stages">
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div class="stage-label">Precontemplación</div>
+        <div class="stage-quote">"No veo ningún problema en mi conducta"</div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div class="stage-label">Contemplación</div>
+        <div class="stage-quote">"Quiero dejar de sentirme atascado, pero…"</div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div class="stage-label">Preparación</div>
+        <div class="stage-quote">"Estoy planificando cómo voy a actuar"</div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div class="stage-label">Acción</div>
+        <div class="stage-quote">"Mi cambio ya es visible para los demás"</div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div class="stage-label">Mantenimiento</div>
+        <div class="stage-quote">"Sostengo las modificaciones en el tiempo"</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:11px;color:#666;font-style:italic">* Puede existir una 6.ª etapa: <strong>Recaída</strong> — oportunidad de aprendizaje, no fracaso. El modelo es cíclico.</p>
+  </div>
+
+  <!-- ══ ROW 3: Técnicas verbales + no verbales + herramientas ══ -->
+  <div class="grid row-3 mb">
+
+    <!-- 5. Técnicas verbales -->
+    <div class="card green">
+      <span class="card-num">5</span>
+      <div class="tag">Comunicación Verbal</div>
+      <h2>Técnicas Verbales</h2>
+      <ul class="dot">
+        <li><strong>Preguntas abiertas:</strong> invitan a explorar sin limitar la respuesta</li>
+        <li><strong>Reflexión:</strong> devolver el contenido emocional con otras palabras</li>
+        <li><strong>Parafraseo:</strong> reformular el contenido cognitivo</li>
+        <li><strong>Resúmenes:</strong> integrar y ordenar lo expresado</li>
+        <li><strong>Confirmación:</strong> reconocer los esfuerzos del paciente</li>
+        <li><strong>Afirmaciones:</strong> resaltar fortalezas y valores</li>
+      </ul>
+    </div>
+
+    <!-- 6. Técnicas no verbales -->
+    <div class="card red">
+      <span class="card-num">6</span>
+      <div class="tag">Comunicación No Verbal</div>
+      <h2>Técnicas No Verbales</h2>
+      <ul class="dot">
+        <li><strong>Contacto visual:</strong> adecuado, sin intimidar</li>
+        <li><strong>Expresión facial:</strong> concordante con el relato del paciente</li>
+        <li><strong>Postura receptiva:</strong> abierta, ligeramente inclinada</li>
+        <li><strong>Gestos empáticos:</strong> asentimiento, apertura de manos</li>
+        <li><strong>Silencios oportunos:</strong> dejar espacio para la reflexión</li>
+        <li><strong>Proxemia:</strong> distancia adecuada al contexto cultural</li>
+      </ul>
+    </div>
+
+    <!-- 7. Herramientas interacción -->
+    <div class="card plum">
+      <span class="card-num">7</span>
+      <div class="tag">Herramientas de Interacción</div>
+      <h2>Gestión de la Conversación</h2>
+      <ul class="dot">
+        <li><strong>Validación emocional:</strong> reconocer y normalizar la emoción</li>
+        <li><strong>Reforzamiento positivo:</strong> fortalecer conductas adaptativas</li>
+        <li><strong>Clarificación:</strong> precisar lo que el paciente expresa</li>
+        <li><strong>Reencuadre:</strong> ofrecer perspectivas alternativas</li>
+        <li><strong>Control del ritmo:</strong> regular la velocidad y profundidad</li>
+        <li><strong>Adaptación empática:</strong> ajustarse a las necesidades del entrevistado</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══ ROW 4: Elementos diferenciales (full width) ══ -->
+  <div class="card blue mb">
+    <span class="card-num">8</span>
+    <div class="tag">Elementos Diferenciales · Entrevista Motivacional</div>
+    <h2>Principios Fundamentales del Counseling</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="icon">🤝</span>
+        <strong>Empatía</strong>
+        <span>Escucha activa, respetuosa y sin juicio. Aceptación incondicional del paciente.</span>
+      </div>
+      <div class="pillar">
+        <span class="icon">⚖️</span>
+        <strong>Desarrollo de la Discrepancia</strong>
+        <span>Mostrar la diferencia entre la situación actual y los valores/objetivos del paciente, sin presionar.</span>
+      </div>
+      <div class="pillar">
+        <span class="icon">🔄</span>
+        <strong>Trabajo con la Resistencia</strong>
+        <span>Evitar confrontaciones. Usar colaboración y escucha empática para "rodar con la resistencia".</span>
+      </div>
+      <div class="pillar">
+        <span class="icon">💪</span>
+        <strong>Apoyo a la Autoeficacia</strong>
+        <span>Fomentar la confianza del paciente en su propia capacidad de cambiar.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 5: Marco ético + Resumen ══ -->
+  <div class="grid row-2 mb">
+
+    <!-- Marco ético / contexto clínico -->
+    <div class="card dark">
+      <span class="card-num">+</span>
+      <div class="tag">Marco Clínico Ampliado</div>
+      <h2>Contexto y Encuadre Terapéutico</h2>
+      <ul class="dot">
+        <li>Establecer <strong>alianza terapéutica</strong> sólida como base del proceso</li>
+        <li><strong>Confidencialidad y consentimiento</strong> informado como pilares éticos</li>
+        <li>Evaluación continua del <strong>estado motivacional</strong> del paciente</li>
+        <li>Uso de la <strong>escala de importancia/confianza</strong> (0–10) para medir disposición al cambio</li>
+        <li>Integración con enfoques como <strong>TCC, ACT o enfoque humanista</strong> según el caso</li>
+        <li>Registros y <strong>supervisión clínica</strong> para garantizar la calidad del proceso</li>
+      </ul>
+    </div>
+
+    <!-- 9. Resumen -->
+    <div class="card green">
+      <span class="card-num">9</span>
+      <div class="tag">Síntesis</div>
+      <h2>Características Esenciales</h2>
+      <div class="chips">
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Expresar empatía</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Crear discrepancia</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Tomar conciencia</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Razones para cambiar</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Evitar discusiones</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Reorientar resistencia</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Fomentar autoeficacia</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Alianza terapéutica</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">No directividad</span>
+        <span class="chip" style="border-color:var(--accent3);color:var(--accent3)">Respeto a la autonomía</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <span>Counseling · Entrevista Motivacional · Psicología Clínica</span>
+    <span>Basado en: Miller &amp; Rollnick · Prochaska &amp; DiClemente · Rogers</span>
+    <span>Infografía Académica de Referencia</span>
+  </footer>
+
+</div>
+</body>
+</html>
